@@ -1,0 +1,214 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Assesment Kledo",
+        "contact": {}
+    },
+    "host": "kledo.febryancaesarpratama.com",
+    "basePath": "/api",
+    "securityDefinitions": {},
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/settings": {
+            "patch": {
+                "summary": "Edit Setting",
+                "tags": [
+                    "Settings"
+                ],
+                "operationId": "EditSetting",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "Body",
+                    "in": "body",
+                    "required": true,
+                    "description": "",
+                    "schema": {
+                        "$ref": "#/definitions/EditSettingRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/employees": {
+            "post": {
+                "summary": "Store Employee",
+                "tags": [
+                    "Employee"
+                ],
+                "operationId": "StoreEmployee",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "Body",
+                    "in": "body",
+                    "required": true,
+                    "description": "",
+                    "schema": {
+                        "$ref": "#/definitions/StoreEmployeeRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/overtimes": {
+            "post": {
+                "summary": "Store Overtimes",
+                "tags": [
+                    "Overtime"
+                ],
+                "operationId": "StoreOvertimes",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "Body",
+                    "in": "body",
+                    "required": true,
+                    "description": "",
+                    "schema": {
+                        "$ref": "#/definitions/StoreOvertimesRequest"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        },
+        "/overtime-pays/calculate": {
+            "get": {
+                "summary": "New Request",
+                "tags": [
+                    "Overtime Calculate"
+                ],
+                "operationId": "NewRequest",
+                "deprecated": false,
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "headers": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "EditSettingRequest": {
+            "title": "EditSettingRequest",
+            "example": {
+                "key": "overtime_method",
+                "value": 1
+            },
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "required": [
+                "key",
+                "value"
+            ]
+        },
+        "StoreEmployeeRequest": {
+            "title": "StoreEmployeeRequest",
+            "example": {
+                "name": "Febryan Pratama",
+                "salary": 2000000
+            },
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "required": [
+                "name",
+                "salary"
+            ]
+        },
+        "StoreOvertimesRequest": {
+            "title": "StoreOvertimesRequest",
+            "example": {
+                "employee_id": 1,
+                "date": "2022-12-31",
+                "time_started": "18:00",
+                "time_ended": "21:20"
+            },
+            "type": "object",
+            "properties": {
+                "employee_id": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "date": {
+                    "type": "string"
+                },
+                "time_started": {
+                    "type": "string"
+                },
+                "time_ended": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "employee_id",
+                "date",
+                "time_started",
+                "time_ended"
+            ]
+        }
+    },
+    "tags": [{
+            "name": "Settings"
+        },
+        {
+            "name": "Employee"
+        },
+        {
+            "name": "Overtime"
+        },
+        {
+            "name": "Overtime Calculate"
+        }
+    ]
+}
